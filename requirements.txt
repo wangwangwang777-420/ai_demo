@@ -1,0 +1,6 @@
+# Django 4.2+ (compatible with 5.x). Requires Python 3.10+
+Django>=4.2,<6.0
+# HTTP client for OpenAI-compatible LLM streaming API (stream=True + iter_lines)
+requests>=2.31,<3
+# Read .env for environment variables (never hardcode API keys)
+python-dotenv>=1.0,<2
