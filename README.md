@@ -116,23 +116,6 @@ data: [DONE]
 （注释里已给出示例配置），业务代码因为全部走 ORM 无需改动。注意需安装
 `mysqlclient`（或 `pymysql`）。
 
-## 简历中可以怎么写
-
-**项目：AI 对话助手 —— Django 流式 LLM 应用（多轮记忆 + RAG 预留）**
-
-- 使用 Django（MVT 架构）开发 Web 应用，实现 IM 风格聊天页面与 `POST /api/chat` 流式接口
-- 基于 OpenAI 兼容 `chat/completions` 接口，用 `requests.stream=True + iter_lines` 解析 SSE，
-  通过 `StreamingHttpResponse` 逐片推送，前端 `fetch + ReadableStream` 消费并实现打字机效果
-- 设计 `Message` 模型（session_id / role / content / created_at），按会话读取最近 N 条历史
-  拼装上下文，实现多轮记忆；ORM 全字段索引，方便切换 MySQL
-- 环境变量隔离：`python-dotenv` 读取 `.env`，API Key / 系统提示词 / 供应商地址集中配置，
-  支持 DeepSeek / OpenAI / 通义千问 / 智谱一键切换
-- 预留 RAG 注入点（`build_messages` / `retrieve_documents`），为接入知识库问答做准备
-- 异常处理完善：未配置 Key、HTTP 非 200、网络超时、前端断流均有友好返回，接口不崩溃
-
-面试可延展的话题：SSE 与 WebSocket 的取舍、StreamingHttpResponse 与线程内数据库连接管理
-（`close_old_connections`）、如何做限流与鉴权、RAG 的切分/召回策略、SQLite 到 MySQL 的迁移注意点。
-
 ## License
 
 仅供学习 / 简历展示使用。
